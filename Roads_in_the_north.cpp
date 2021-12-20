@@ -15,7 +15,7 @@ int main(){
 	list<list<int> > table(VILLAGE_NUM, list<int>(VILLAGE_NUM, 0));
 		
 
-	while(cin >> village_no_1 >> village_no_:WQ2 >> input_distance){
+	while(cin >> village_no_1 >> village_no_2 >> input_distance){
 		table[village_no_1-1][village_no_2-1]= input_distance;
 		table[village_no_2-1][village_no_1-1]= input_distance;
 	}
