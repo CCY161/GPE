@@ -1,36 +1,50 @@
-#include<iostream>
-#include<string>
-#include<vector>
-#include<algorithm>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
+struct line{
+    int n1;
+    int n2;
+};
+
+long long int fac(int n){
+    long long int sum = 0;
+    for(int i=1 ; i < n ; i++){
+        sum+=i;
+    }
+    return sum; 
+}
 
 int main(){
-    string first;
-    while(getline(cin, first, ' ')){
-        vector<pair<int, int> > line;
-        vector<int> sort_number;
-        int number = 0;
-        int overlap_value = 0;
-        if(first != "."){
-            string second;
-            number++;
-            getline(cin, second);
-            int x1 = atoi(first.c_str());
-            int x2 = atoi(second.c_str());
-            //sort_number.push_back(x1);
-            //sort_number.push_back(x2);
-            line.push_back(pair<int, int>(x1, x2));
-        }
-        else{
-            sort(sort_number.begin(), sort_number.end());
-
-            for(int i = 0 ; i < number ; i++){
-                if((line[i].first < sort_number[number/2]) && (line[i].second < sort_number[number/2]))
-                    overlap_value += (sort_number[number/2]);
-
-            }
-        } 
+    string str;
+    long long int result = 0;
+    line num;    
+    stringstream ss;
+    long int table [100000];
+    for(int i = 0 ; i < 100000 ; i++){
+        table[i] = 0;
     }
+
+    while(getline(cin, str) && str != "."){
+        ss << str;
+        ss >> num.n1 >> num.n2;
+        ss.clear();
+        for(int i = num.n1 ; i < num.n2 ; i++){
+            table[i]++;
+        }
+    }
+
+    for(int i = 0 ; i < 100000 ; i++){
+        if(table[i] > 1){
+            //cout << table[i] << " " << i << "\n";
+            result +=fac(table[i]);
+        }
+    }
+
+    cout << result << "\n";
+
     return 0;
 }
