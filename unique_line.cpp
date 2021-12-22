@@ -18,7 +18,7 @@ int main() {
         cin >> dot;
         set<string> dataset;
 
-        int x[100], y[100];
+        int x[1000], y[1000];
 
         for(int j = 0; j < dot ; j++){
             cin >> x[j] >> y[j];
@@ -35,7 +35,10 @@ int main() {
                     line.b = x[j];
                 }
                 else{
-                    line.m = y_m / x_m;
+                    if(y_m != 0)
+                        line.m = y_m / x_m;
+                    else
+                        line.m = 0;
                     line.b = y[j] - line.m * x[j];
                 }
                 //cout << x_m << " and " << y_m << " and " << line.m << " and " <<  line.b << " temp\n";
